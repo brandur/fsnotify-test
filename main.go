@@ -18,9 +18,12 @@ func main() {
 	done := make(chan bool)
 	go func() {
 		for {
+			log.Println("start loop")
+
 			select {
 			case event, ok := <-watcher.Events:
 				if !ok {
+					log.Println("not ok")
 					return
 				}
 				log.Println("event:", event)
